@@ -79,6 +79,9 @@ const App = () => {
   const selectedProject = projectsState.projects.find(
     (project) => project.id === projectsState.selectedProjectId
   )
+  const selectedTask = projectsState.tasks.filter(
+    (task) => task.projectId === projectsState.selectedProjectId
+  )
 
   function handleDeleteProject() {
     setProjectsState((prevState) => {
@@ -98,7 +101,7 @@ const App = () => {
       onDelete={handleDeleteProject}
       onAddTask={handleAddTask}
       onDeleteTask={handleDeleteTask}
-      tasks={projectsState.tasks}
+      tasks={selectedTask}
     />
   )
   if (projectsState.selectedProjectId === null) {
